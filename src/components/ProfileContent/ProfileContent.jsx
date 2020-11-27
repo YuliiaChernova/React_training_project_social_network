@@ -1,21 +1,13 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts';
 import classes from './ProfileContent.module.css';
+import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 function ProfileContent() {
     return (
         <div>
-
-            <div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/AlsterPanorama.jpg/900px-AlsterPanorama.jpg" />
-            </div>
-
-            <div>
-                ava+description
-            </div>
-
+            <ProfileInfo />
             <MyPosts />
-
         </div>
     )
 }

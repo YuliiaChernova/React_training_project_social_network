@@ -1,0 +1,12 @@
+.dialog {
+    margin: 20px;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: #222823;
+}
+
+.dialog a.active {
+    color: gold;
+}

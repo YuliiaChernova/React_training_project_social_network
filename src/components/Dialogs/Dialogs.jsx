@@ -1,29 +1,35 @@
 import React from 'react';
 import classes from './Dialogs.module.css';
 import {NavLink} from 'react-router-dom';
+import Dialog from './Dialog/Dialog';
+import Message from './Message/Message';
 
 function Dialogs() {
+
+    let dialogsData = [
+        {id: 1, name: 'Alex'},
+        {id: 2, name: 'Bob'},
+        {id: 3, name: 'Mary'},
+        {id: 4, name: 'Helga'},
+    ];
+
+    let messagesData = [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'Hello'},
+        {id: 3, message: 'Hakuna Matata'},
+        {id: 4, message: 'How are you?'},
+    ];
+
+    let dialogsElements = dialogsData.map((dialog) => <Dialog id={dialog.id} userName={dialog.name} />);
+    let messagesElements = messagesData.map((message) => <Message message={message.message} />);
+    
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                <div className={classes.dialog}>
-                    <NavLink to="/dialogs/1" activeClassName={classes.active}> Alex </NavLink>
-                </div> 
-                <div className={classes.dialog}>
-                    <NavLink to="/dialogs/2" activeClassName={classes.active}> Bob </NavLink>
-                </div>
-                <div className={classes.dialog}>
-                    <NavLink to="/dialogs/3" activeClassName={classes.active}> Mary </NavLink>
-                </div>
-                <div className={classes.dialog}>
-                    <NavLink to="/dialogs/4" activeClassName={classes.active}> Helga </NavLink>
-                </div>
-                
+                {dialogsElements} 
             </div>
             <div className={classes.messages}>
-                <div className={classes.message}>Hi</div>
-                <div className={classes.message}>Hello</div>
-                <div className={classes.message}>Anybody home?</div>
+               {messagesElements}
             </div>        
         </div>
     )
