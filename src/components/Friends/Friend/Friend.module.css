@@ -1,0 +1,14 @@
+.item {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.item .itemName {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.item .itemPhoto img {
+    width: 50px;
+    border-radius: 50%;
+}

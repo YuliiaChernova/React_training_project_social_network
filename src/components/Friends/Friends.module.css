@@ -1,0 +1,9 @@
+.header {
+    margin: 20px 20px;;
+    font-size: 26px;
+}
+
+.itemsArea {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
