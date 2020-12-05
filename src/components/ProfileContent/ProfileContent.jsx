@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './ProfileContent.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
@@ -8,7 +7,11 @@ function ProfileContent(props) {
     return (
         <div>
             <ProfileInfo />
-            <MyPosts postsData = {props.state.postsData}/>
+            <MyPosts
+                postsData = {props.state.postsData}
+                inputValue = {props.state.inputValue}
+                addPost={props.addPost}
+                changePostInput={props.changePostInput}/>
         </div>
     )
 }
