@@ -1,4 +1,6 @@
 import React from 'react';
+import { addPostActionCreator, changePostInputActionCreator } from '../../../redux/profilePageReducer';
+
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 
@@ -8,14 +10,14 @@ function MyPosts(props) {
     
     let newPostElement = React.createRef();
     
-    let addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
+    let onAddPostClick = () => {
+        let postMessage = newPostElement.current.value;
+        props.dispatch(addPostActionCreator(postMessage));
     };
 
-    let changePostInput = () => {
-        let letter = newPostElement.current.value;
-        props.changePostInput(letter);
+    let onChangePostInput = (e) => {
+        let letter = e.target.value;
+        props.dispatch(changePostInputActionCreator(letter));
         
     };
 
@@ -23,10 +25,10 @@ function MyPosts(props) {
         <div className={classes.postsBlock}> <h3>My posts</h3>
             <div> New Post
                 <div>
-                    <textarea ref={newPostElement} value={props.inputValue} onChange={changePostInput}></textarea>
+                    <textarea ref={newPostElement} value={props.inputValue} onChange={onChangePostInput}></textarea>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={onAddPostClick}>Add post</button>
                 </div>
             </div>
 

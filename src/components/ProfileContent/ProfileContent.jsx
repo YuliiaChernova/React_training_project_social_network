@@ -10,8 +10,7 @@ function ProfileContent(props) {
             <MyPosts
                 postsData = {props.state.postsData}
                 inputValue = {props.state.inputValue}
-                addPost={props.addPost}
-                changePostInput={props.changePostInput}/>
+                dispatch = {props.dispatch}/>
         </div>
     )
 }

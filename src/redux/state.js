@@ -1,3 +1,7 @@
+import dialogsPageReducer from "./dialogsPageReducer";
+import profilePageReducer from "./profilePageReducer";
+import sideBarReducer from "./sideBarReducer";
+
 let store = {
     _state: {
         profilePage: {
@@ -31,47 +35,27 @@ let store = {
             ]
         },
     },
-    getState() {
-        return this._state;
-    },
-
     _callSubscriber() {
         console.log('State changed');
     },
-
-    addPost(postMessage) {
-        let newPost = {
-            id: 6,
-            text: postMessage,
-            likesCount: 0,
-        };
-        this._state.profilePage.postsData.push(newPost);
-        this._state.profilePage.inputValue = '';
-        this._callSubscriber(this._state);
-    },
-    changePostInput(letter) {
-        this._state.profilePage.inputValue = letter;
-        this._callSubscriber(this._state);
-    },
-
-    sendMessage(message) {
-        let newMessage = {
-            id: 1,
-            message: message,
-        };
     
-        this._state.dialogsPage.messagesData.push(newMessage);
-        this._state.dialogsPage.inputValue = '';
-        this._callSubscriber(this._state);
+    getState() {
+        return this._state;
     },
-    changeMessageInput(letter) {
-        this._state.dialogsPage.inputValue = letter;
-        this._callSubscriber(this._state);
-    },
-    
     subscribe(observer) {
         this._callSubscriber = observer;
     },
+
+    dispatch(action) {
+
+        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
+        this._state.sideBar = sideBarReducer(this._state.sideBar, action);
+        
+        this._callSubscriber(this._state);
+
+    }
+    
 };
 
 window.store = store;

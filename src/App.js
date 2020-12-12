@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
@@ -13,38 +13,34 @@ import Settings from './components/Settings/Settings';
 
 function App(props) {
   return (
-    <BrowserRouter>
-      <div className="app-wrapper">
+    <div className="app-wrapper">
 
-        <Header />
-        <Nav state={props.state}/>
-        <div className="app-wrapper-content">
+      <Header />
+      <Nav state={props.state} />
+      <div className="app-wrapper-content">
 
-          <Route path="/profile"
-            render={() => <ProfileContent
-              state={props.state.profilePage}
-              addPost={props.addPost}
-              changePostInput={props.changePostInput}/>} />
+        <Route path="/profile"
+          render={() => <ProfileContent
+            state={props.state.profilePage}
+            dispatch={props.dispatch} />} />
 
-          <Route path="/dialogs"
-            render={() => <Dialogs
-              state={props.state.dialogsPage}
-              sendMessage={props.sendMessage}
-              changeMessageInput={props.changeMessageInput} />} />
+        <Route path="/dialogs"
+          render={() => <Dialogs
+            state={props.state.dialogsPage}
+            dispatch={props.dispatch} />} />
 
-          <Route path="/music" component={Music} />
-          <Route path="/news" component={News} />
-          <Route path="/settings" component={Settings} />
-          
-          <Route path="/friends"
-            render={() => <Friends
-              state={props.state.sideBar} />} />
+        <Route path="/music" component={Music} />
+        <Route path="/news" component={News} />
+        <Route path="/settings" component={Settings} />
 
-           
-        </div>
+        <Route path="/friends"
+          render={() => <Friends
+            state={props.state.sideBar} />} />
+
 
       </div>
-    </BrowserRouter>
+
+    </div>
   );
 }
 
