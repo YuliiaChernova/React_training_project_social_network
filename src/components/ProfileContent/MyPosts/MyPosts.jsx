@@ -1,24 +1,25 @@
 import React from 'react';
-import { addPostActionCreator, changePostInputActionCreator } from '../../../redux/profilePageReducer';
-
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 
 function MyPosts(props) {
+    let postsData = props.profilePage.postsData;
+    let postsElements = postsData.map((post) => <Post
+        text={post.text}
+        likesCount={post.likesCount}
+        id={post.id} />);
 
-    let postsElements = props.postsData.map((post) => <Post message={post.text} likesCount={post.likesCount} />);
-    
     let newPostElement = React.createRef();
-    
+
     let onAddPostClick = () => {
         let postMessage = newPostElement.current.value;
-        props.dispatch(addPostActionCreator(postMessage));
+        props.addPost(postMessage);
     };
 
     let onChangePostInput = (e) => {
         let letter = e.target.value;
-        props.dispatch(changePostInputActionCreator(letter));
-        
+        props.changePostInput(letter);
+
     };
 
     return (
@@ -33,7 +34,7 @@ function MyPosts(props) {
             </div>
 
             <div className={classes.posts}>
-               {postsElements}
+                {postsElements}
             </div>
         </div>
     )

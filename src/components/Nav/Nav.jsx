@@ -22,11 +22,14 @@ function Nav(props) {
             <div className={classes.item}>
                 <NavLink to="/settings" activeClassName={classes.active}>Settings</NavLink>
             </div>
-            <div className={classes.item}>
-                <NavLink to="/friends"> <Friends state={props.state.sideBar}/> </NavLink>
-            </div>
         </nav>
     )
 }
+
+/*
+<div className={classes.item}>
+                <NavLink to="/friends"> <Friends state={props.state.sideBar}/> </NavLink>
+            </div>
+*/
 
 export default Nav;

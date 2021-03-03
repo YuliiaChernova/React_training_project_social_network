@@ -1,16 +1,13 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 function ProfileContent(props) {
-
     return (
         <div>
             <ProfileInfo />
-            <MyPosts
-                postsData = {props.state.postsData}
-                inputValue = {props.state.inputValue}
-                dispatch = {props.dispatch}/>
+            <MyPostsContainer/>
+
         </div>
     )
 }

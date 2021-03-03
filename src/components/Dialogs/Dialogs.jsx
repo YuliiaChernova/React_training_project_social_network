@@ -2,28 +2,26 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
-import { changeMessageInputActionCreator, sendMessageActionCreator } from '../../redux/dialogsPageReducer';
 
 function Dialogs(props) {
-
-    let dialogsData = props.state.dialogsData;
-    let messagesData = props.state.messagesData;
-    let messageInput = props.state.inputValue;
+    let dialogsData = props.dialogsPage.dialogsData;
+    let messagesData = props.dialogsPage.messagesData;
+    let messageInput = props.dialogsPage.inputValue;
 
     let dialogsElements = dialogsData.map((dialog) => <Dialog id={dialog.id} userName={dialog.name} />);
     let messagesElements = messagesData.map((message) => <Message message={message.message} />);
 
     let newMessageElement = React.createRef();
- 
-    let onChangeMessageInput = (e) => {
-        let letter = e.target.value;
-        props.dispatch(changeMessageInputActionCreator(letter));
-    };
 
     let onSendMessage = () => {
         let message = newMessageElement.current.value;
-        props.dispatch(sendMessageActionCreator(message));
-    }
+        props.sendMessage(message);
+    };
+ 
+    let onChangeMessageInput = (e) => {
+        let letter = e.target.value;
+        props.changeMessageInput(letter);
+    };
 
     return (
         <div className={classes.dialogs}>

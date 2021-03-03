@@ -1,11 +1,13 @@
 import React from 'react';
 import classes from './Header.module.css';
+import {NavLink} from 'react-router-dom';
 
 function Header() {
     return (
-        <header className={classes.header}>
+        <div className={classes.header}>
             <img src="https://bower.io/img/bower-logo.png" />
-        </header>
+            <NavLink to="/users">Users &#128269;</NavLink>
+        </div>
     )
 }
 
